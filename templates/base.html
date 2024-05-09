@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block title %} {% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com">   
+</script>
+
+    <script src="{{ url_for('static',filename='js/vue.min.js')}}">
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+<style>
+  @media print {
+    body *{
+      display: none;
+    }
+
+    #pdf , #pdf *{
+      display:block
+    }
+
+  }
+
+</style>
+
+</head>
+  <body>
+    <header>
+      {% block header %} {% endblock %}
+
+    </header>
+
+    {% block main %} {% endblock %}
+
+    <footer>
+      {% include "bottombar.html" %} 
+    </footer>
+
+  
+  </body>
+</html>

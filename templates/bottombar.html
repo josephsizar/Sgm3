@@ -1,0 +1,53 @@
+<div class="fixed bottom-0 left-0 w-full border-2 border-gray-500 border-solid px-4 py-2 flex flex-row justify-center items-center gap-4 shadow-lg bg-gray-200 ">
+ 
+  <a href="{{url_for('secretary')}}" class="px-2 py-2 rounded-md border
+    border-solid 
+    {% if request.path == url_for('secretary') %} 
+    bg-gray-500 text-white border-white
+    {% else %}
+    border-gray-500 bg-gray-200 text-gray-500 hover:bg-gray-300
+    {% endif %}
+    ">
+
+    <i class="fa-solid fa-desktop">
+      
+    </i>
+  
+  </a>
+
+
+
+  <a href="{{url_for('gazelle')}}" class="px-2 py-2 border rounded-md border border-solid 
+
+   {% if request.path == url_for('gazelle') %}
+   bg-gray-500 text-white border-white
+   {% else %}
+   border-gray-500 bg-gray-200 text-gray-500 hover:bg-gray-300
+   {% endif %}
+    ">
+
+    <i class="fa-solid fa-helicopter">
+    
+    </i>
+  
+  </a>
+
+
+
+
+  <a href="{{url_for('home')}}" class="px-2 py-2 rounded-md border border-solid
+
+  {% if request.path == url_for('home') %}
+  bg-gray-500 text-white border-white
+  {% else %}
+  border-gray-500 bg-gray-200 text-gray-500 hover:bg-gray-300
+  {% endif %}
+    ">
+
+   <i class="fa-solid fa-house">
+     
+   </i>
+
+  </a>
+
+</div>

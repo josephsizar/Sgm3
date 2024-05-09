@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %} Calculator {% endblock %}
+
+{% block main %}
+
+<div id="app" class="w-full h-screen flex flex-col justify-center items-center px-6 py-6">
+
+  <div class="w-full px-10 flex flex-row relative justify-center items-center gap-4 mb-6 ">
+
+    <!-- Duration 1 -->
+    <div  class="text-3xl min-w-20 h-12 px-2 py-2 font-bold tracking-wider relative">
+
+      [[ timeone[0].length >= 2 ? timeone[0] :`0${timeone[0]}` ]]
+    <span class="absolute font-light top-0 right-0 text-xl">
+      [[ timeone[1].length >= 2 ? timeone[1] : `0${timeone[1]}` ]]
+    <span>
+
+    </div>
+
+    <!--  Operation    -->
+
+     <div class="text-2xl text-green-600">
+       [[selSign]] 
+     </div>
+    <!-- Duration 2  -->
+    <div class="text-3xl min-w-20 h-12 px-2 py-2 font-bold tracking-wider relative">
+      [[ timetwo[0].length >= 2 ? timetwo[0] : `0${timetwo[0]}`]]
+      <span class="absolute font-light top-0 right-0 text-xl">
+        [[ timetwo[1].length >= 2 ? timetwo[1] : `0${timetwo[1]}` ]]
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="w-60 text-4xl grid grid-cols-3 gap-2 mb-2">
+    <button class="col-span-2 bg-red-100 border border-red-600 border-solid rounded-md font-bold text-2xl text-red-600" @click="signer('dl')" > Del</button>
+
+    <button class="col-span-1 bg-red-100 border border-red-600 border-solid rounded-md font-bold text-2xl text-red-600" @click="signer('x')" > X </button>
+
+  </div>
+
+ <div class="w-60 text-2xl flex bg-stone-200 text-stone-600 flex-col justify-center items-center text-center h-10 rounded-md border-2 border-stone-700 border-solid mb-2 mx-auto">
+   [[test]]
+   
+ </div>
+  <div class="flex flex-row gap-2">
+
+  <div class="grid grid-cols-3 gap-2">
+    <button class="bg-stone-200 border border-stone-600 text-4xl font-bold rounded-md text-stone-600 py-2 px-4" v-for="(ind,num) in nums" @click="tester(num)" :key="ind" > [[num]] </button>
+
+
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <button class="bg-green-200 border border-green-600 text-4xl font-bold rounded-md text-green-600 py-2 px-4" v-for="(ind,sign) in signs" :key="ind" @click="signer(sign)" > [[sign]]</button> 
+
+  </div>
+  </div>
+  <div class="grid grid-cols-4 mt-2 gap-2">
+    <button class="col-span-3 bg-green-300 border border-green-700 text-4xl font-bold rounded-md text-green-700 py-2  px-4 text-center" @click="tester(0)" > 0 </button>
+
+    <button class="col-span-1 bg-green-300 border border-green-700 text-4xl font-bold rounded-md text-green-600 py-2 px-4 text-center" @click="signer(':')" > :&nbsp; </button>
+  </div>
+ 
+  <div v-if="historyTimes.length > 0" class="w-72 mt-2 flex flex-col  items-center gap-2 px-2 py-2 h-52  overflow-y-auto ">
+
+    <div v-for="(ind,itm) in historyTimes" :key="ind" class="px-4 py-2 rounded-md border border-stone-600 border-solid bg-stone-200 text-center text-xl w-full text-stone-600">
+      [[itm]]
+
+    </div>
+
+  </div>
+
+
+
+  
+
+  
+</div>
+
+
+<script src="{{url_for('static',filename='js/calctime.js')}}">
+
+</script>
+{% endblock %}

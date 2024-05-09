@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %} Envoi Mission {% endblock %}
+
+{% block main %}
+
+<style>
+.tile{
+  width:180px;
+}
+</style>
+
+ <div  id="app" class="w-full h-screen">
+
+   <div id="pdf" class="w-full px-4 py-4 flex flex-col">
+   
+     {% include "parts/head_fra.html" %}
+
+     <div class="w-full underline pb-2 pt-12 text-center text-2xl ">
+      ENVOI EN MISSION
+
+    </div>
+
+  <div class="px-12 pt-12">
+
+    <table class="w-full border-collapse border border-gray-500 border-solid">
+
+      <thead>
+
+        <tr>
+          <th class="border border-gray-500 px-4 py-2">  Grade
+          </th>
+          <th class="border border-gray-500 px-4 py-2"> Prenom
+
+          </th>
+
+          <th class="border border-gray-500 px-4 py-2"> Nom
+          </th>
+
+          <th class="border border-gray-500 px-4 py-2"> Mle
+
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+        {% for user in users %}
+
+        <tr>
+
+          <td class="border text-center border-gray-500 px-4 py-2"> {{user.grade}}
+          </td>
+          <td class="border text-center border-gray-500 px-4 py-2 ">  {{user.prenom}}
+
+          </td>
+          <td class="border text-center border-gray-500 px-4 py-2">  {{user.nom}}
+          </td>
+
+          <td class="border text-center border-gray-500 px-4 py-2">
+
+          {{user.matricule}}
+
+          </td>
+        
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+
+
+    </table>
+
+
+  </div>
+
+  {% include "parts/misdetails.html" %}
+
+  {% include "parts/signature.html" %}
+
+
+   </div>
+   <hr class="h-2 bg-gray-500">
+
+   <div class="px-10 pt-5 flex flex-col justify-center items-center gap-4 overflow-y-auto ">
+
+  <p class="text-4xl font-bold tracking-wider"> Modify Details </p>
+
+  
+</div>
+
+{% include "parts/envmedit.html" %}
+
+ </div>
+
+
+ <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
+ 
+
+<script src="{{url_for('static',filename='js/envm.js')}}">
+
+</script>
+
+
+{% endblock %}

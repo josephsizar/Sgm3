@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %} Gazelle Suivi {% endblock %}
+
+{% block main %}
+
+<div id="app" class="w-full text-md h-screen flex flex-col  items-center gap-8 px-6 py-6 " >
+
+<h1 class="text-xl font-bold tracking-wider px-10 py-4 rounded-md bg-stone-200 text-stone-500 border border-stone-500 border-solid">  Gestionaire Gazelle </h1>
+
+<div class="flex flex-col px-6 w-full justify-center items-center gap-4 w-full ">
+  <div class="flex items-center justify-center flex-row gap-4 w-full">
+
+    <label> Duration : </label>
+    
+    <label class="px-4 flex flex-col justify-center items-center w-32 h-8 rounded-md text-md font-bold tracking-wider border border-stone-600 border-solid" for="timeinp"> [[timeinput]] </label>
+    <input id="timeinp" class="w-6 h-8 px-2 rounded-md"  type="time" placeholder="Time 00:00" v-model="timeinput" >
+
+  </div>
+
+  <button @click="get_total" class="px-4 py-2 rounded-md border border-stone-700 border-solid bg-stone-200 text-stone-700"> Submit </button>
+ 
+</div>
+
+<div>
+  <table>
+   <thead>
+     <tr>
+      <th class="border border-stone-500 border-solid px-4 py-2 font-bold" v-for="(inx,itm) in tableHeads">
+        [[itm]]
+      </th>
+     </tr>
+
+   </thead>
+   <tbody>
+     <tr v-for="(inx,itm) in timearray">
+      <td class="border border-stone-500 border-solid px-4 py-2 " >
+        [[itm]]
+      </td>
+      <td class="border border-stone-500 border-solid px-4 py-2">
+        Item [[inx]]
+      </td>
+     </tr>
+   </tbody>
+
+  </table>
+
+  <p class="text-2xl pt-6 text-stone-500">
+   Total Time is :
+   <span class="text-emerald-500">
+     [[totalTimes]]
+   </span>
+  </p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script src="{{url_for('static',filename='js/gaz.js')}}">
+
+</script>
+
+{% endblock %}
